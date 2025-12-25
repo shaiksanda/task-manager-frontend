@@ -1,0 +1,62 @@
+.add-date-wrapper{
+  width: 100%;
+  height: 60px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding:10px;
+  margin:6px 0px;
+}
+
+.add-date-element {
+  padding: 8px 12px;
+  font-size: 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  color: magenta;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.date-label{
+  font-size: 12px;
+  font-weight: 400;
+  color: magenta;
+}
+
+@media screen and (min-width:768px){
+  .add-date-element{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .date-label{
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+  scrollbar-width: none;
+  padding: 10px;
+  min-height: 80vh;
+}
+
+.form{
+  background-color: black;
+  border-radius: 8px;
+}
+
+@media screen and (min-width:768px){
+  .main{
+    margin-left: 230px;
+  }
+}

@@ -1,0 +1,32 @@
+
+
+@media screen and (min-width:1200px){
+    aside{
+        display: block;
+    }
+}
+
+h1,
+p {
+    margin: 5px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin:10px;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.item-label{
+    font-size: 16px;
+}
+
+@media screen and (min-width:768px){
+    .item-label{
+        font-size: 20px;
+    }
+}
+

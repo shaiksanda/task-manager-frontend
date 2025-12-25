@@ -1,0 +1,142 @@
+
+
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px 0px;
+    border-radius: 8px;
+    height: 200px;
+}
+
+.small-device-icon {
+    display: block;
+}
+
+.popup-heading {
+    color: orangered;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.confirm-button {
+    width: 90px;
+    height: 40px;
+    border: none;
+    background-color: orangered;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+}
+
+.close-button {
+    width: 90px;
+    height: 40px;
+    border: none;
+    background-color: darkmagenta;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+
+
+.remove-styling {
+    text-decoration: none;
+}
+
+.dashboard {
+    display: none;
+}
+
+.todo-logo-1 {
+    width: 80px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 1s ease all;
+}
+
+.todo-logo-1:hover {
+    transform: scale(1.1);
+}
+
+.username-heading{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* dont remove this username-heading */
+/* .username-heading {
+    font-size: 24px;
+    font-weight: bold;
+    background-image: url("https://res.cloudinary.com/dq4yjeejc/image/upload/v1753527568/Screenshot_2025-07-26_162915_eurno4.png");
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    --webkit-background-clip: text;
+    color: transparent;
+
+} */
+
+.light-mode {
+    color: black;
+    cursor: pointer;
+    transition: 0.6s all ease;
+}
+
+.light-mode:hover {
+    transform: scale(1.2);
+}
+
+.navigation-heading {
+    cursor: pointer;
+}
+
+.navigation-heading:hover {
+    color: magenta;
+}
+
+@media screen and (min-width:768px) {
+    .confirm-button {
+        width: 120px
+    }
+
+    .todo-logo-1 {
+        width: 90px;
+        height: 70px;
+    }
+
+    .close-button {
+        width: 120px;
+    }
+
+    .dashboard {
+        display: block;
+    }
+
+    .small-device-icon {
+        display: none;
+    }
+
+    .username-heading {
+        font-size: 30px;
+    }
+}
