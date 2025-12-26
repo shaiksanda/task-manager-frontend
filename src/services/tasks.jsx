@@ -35,8 +35,8 @@ export const tasks = taskService.injectEndpoints({
 
         }),
         updateTask: builder.mutation({
-            query: ({ update}) => ({
-                url: `/tasks/updateTask/${update.id}`,
+            query: ({ id,update}) => ({
+                url: `/tasks/updateTask/${id}`,
                 method: 'PUT',
                 body: update,
             }),
