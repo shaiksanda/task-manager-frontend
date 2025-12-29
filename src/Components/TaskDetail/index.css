@@ -1,0 +1,9 @@
+
+.task-content{
+    background-color: black;
+    padding: 8px;
+    margin:4px;
+    color:white;
+    border-radius: 6px;
+    cursor: pointer;
+}
