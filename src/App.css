@@ -93,7 +93,7 @@ footer {
     position: fixed;
     top: 75px;
     left: 0;
-    width: 220px;
+    width: 245px;
     height: calc(100vh - 56px);
 
     display: flex;

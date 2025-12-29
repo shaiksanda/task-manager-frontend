@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import { tagOptions } from '../../utils/tagOptions';
 import TodosHeader from '../TodosHeader';
+import { useNavigate } from 'react-router-dom';
 
 import "./index.css"
 import Sidebar from '../Sidebar';
@@ -34,6 +35,7 @@ const CreateTask = () => {
 
         return ()=>stagedTimers.stop()
     },[isLoading,isFetching])
+    const navigate=useNavigate()
 
 
     const handleAddTask = async (event) => {
@@ -56,6 +58,7 @@ const CreateTask = () => {
             await createTask(newTodo).unwrap();
             toast.success("Task added successfully!");
             setData({ todo: "", tag: "", priority: "", selectedDate: new Date(), startTime: "", endTime: "" });
+            navigate("/tasks")
             
         } catch (error) {
             toast.error(error?.data?.message || "Failed to Add Task");

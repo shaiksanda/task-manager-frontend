@@ -21,6 +21,7 @@ html {
   display: flex;
   gap: 10px;
   margin: 15px 5px;
+  flex-wrap: wrap;
 }
 
 
@@ -111,7 +112,7 @@ html {
   }
 
   .code-vault-hero {
-    margin-left: 230px;
+    margin-left: 245px;
   }
 }
 
