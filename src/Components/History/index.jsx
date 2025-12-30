@@ -56,7 +56,7 @@ const History = () => {
       <Sidebar />
       <main className="code-vault-hero">
         <h2 className="center">Your Task History</h2>
-        <div className="filters-container">
+        <div className="filters-container flex-wrap">
           <article className="input-wrapper">
             <input
               id="search"
