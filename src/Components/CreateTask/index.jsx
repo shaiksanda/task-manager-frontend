@@ -58,7 +58,7 @@ const CreateTask = () => {
             await createTask(newTodo).unwrap();
             toast.success("Task added successfully!");
             setData({ todo: "", tag: "", priority: "", selectedDate: new Date(), startTime: "", endTime: "" });
-            navigate("/tasks")
+            navigate(-1)
             
         } catch (error) {
             toast.error(error?.data?.message || "Failed to Add Task");
