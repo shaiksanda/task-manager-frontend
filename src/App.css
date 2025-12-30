@@ -59,9 +59,9 @@ footer {
   left: 0;
   width: 100%;
   display: flex;
-  gap:10px;
+  gap:6px;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   background: #3167A8;
   color:black;
   padding: 6px;

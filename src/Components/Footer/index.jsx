@@ -1,8 +1,8 @@
-import { House, Clock,PlusSquare, } from "lucide-react";
+import { House, Clock,PlusSquare,LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useNavigate, } from 'react-router-dom';
 import Cookies from 'js-cookie'
-import Popup from 'reactjs-popup'
+
 import "./index.css"
 
 const Footer = () => {
@@ -20,7 +20,11 @@ const Footer = () => {
             </div>
             <div className="navigation-container">
                 <Link className="remove-styling" to="/create-task"><PlusSquare style={{ color: "white" }} size={25} /></Link>
-                <Link className="remove-styling" to="/create-task"><p style={{ color: "white" }} className="navigation-content">Create Task</p></Link>
+                <Link className="remove-styling" to="/create-task"><p style={{ color: "white" }} className="navigation-content">Create</p></Link>
+            </div>
+              <div className="navigation-container">
+                <Link className="remove-styling" to="/dashboard"><LayoutDashboard style={{ color: "white" }} size={25} /></Link>
+                <Link className="remove-styling" to="/dashboard"><p style={{ color: "white" }} className="navigation-content">Dashboard</p></Link>
             </div>
             <div className="navigation-container">
                 <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>

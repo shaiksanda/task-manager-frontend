@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 import {
-  Home,             // IoMdHome,
+  Home,     
   Clock,
   PlusSquare,
-  Layout,           // TbLayoutDashboardFilled
+  LayoutDashboard,       
   Info,             // FaInfoCircle
   Clipboard,        // FaTasks
   Zap,              // FaFire
@@ -24,9 +24,10 @@ const sidebarItems = [
   { label: "Home", icon: <Home size={30} />, path: "/tasks" },
 
   { label: "Create Task", icon: <PlusSquare size={28} />, path: "/create-task" },
+  { label: "Dashboard", icon: <LayoutDashboard size={30} />, path: "/dashboard" },
   { label: "History", icon: <Clock size={26} />, path: "/history" },
 
-  // { label: "Dashboard", icon: <Layout size={30} />, path: "/dashboard" },
+
   { type: "divider" },
   // { label: "Goals", icon: <Target size={26}/>, path: "/goals" },
   // { label: "Streak", icon: <Zap size={26} color="orangered" />, path: "/streak" },

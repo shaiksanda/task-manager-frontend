@@ -7,6 +7,7 @@ import Tasks from "./Components/Tasks"
 import TaskDetail from './Components/TaskDetail'
 import CreateTask from "./Components/CreateTask";
 import History from "./Components/History"
+import Dashboard from "./Components/Dashboard"
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { ToastContainer } from 'react-toastify';
@@ -25,6 +26,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/tasks" element={<ProtectedRoute element={<Tasks />} />} />
         <Route path="/create-task" element={<ProtectedRoute element={<CreateTask />} />} />
+        <Route path='/dashboard' element={<ProtectedRoute element={<Dashboard />} />} />
         <Route path="/history" element={<ProtectedRoute element={<History />} />} />
         <Route path="/task/:taskId" element={<ProtectedRoute element={<TaskDetail />} />} />
       </Routes>
