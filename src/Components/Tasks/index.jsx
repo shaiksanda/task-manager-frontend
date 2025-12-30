@@ -5,6 +5,7 @@ import TodosHeader from '../TodosHeader';
 import Footer from '../Footer';
 import Confetti from 'react-confetti';
 import { useNavigate } from "react-router-dom";
+import { ClipLoader } from 'react-spinners';
 
 import { Filter, X } from "lucide-react";
 
