@@ -123,11 +123,10 @@ const CreateTask = () => {
                     <div className="input-wrapper">
                         <input
                             name="startTime"
-                            required
                             value={data.startTime}
                             onChange={handleChange}
                             id="startTime"
-                            className="input-element"
+                            className="input-element time"
                             type="time"
                         />
                         <label htmlFor="startTime" className="label">
@@ -138,11 +137,10 @@ const CreateTask = () => {
                     <div className="input-wrapper">
                         <input
                             name="endTime"
-                            required
                             value={data.endTime}
                             onChange={handleChange}
                             id="endTime"
-                            className="input-element"
+                            className="input-element time"
                             type="time"
                         />
                         <label htmlFor="endTime" className="label">

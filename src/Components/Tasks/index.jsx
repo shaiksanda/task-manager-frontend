@@ -21,7 +21,14 @@ import { useGetTodayTasksQuery, useDeleteTaskMutation, useUpdateTaskMutation } f
 import { tagOptions } from '../../utils/tagOptions';
 import ApiStateHandler from '../ApiStateHandler';
 const Tasks = () => {
-
+  const [edit, setEdit] = useState({ tag: "", priority: "", startTime: "", endTime: "", todo: "" })
+  const handleEditChange = (e) => {
+    const { name, value } = e.target
+    setEdit((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
   const [filters, setFilters] = useState({ search: "", tag: "", priority: "", status: "" })
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -91,7 +98,7 @@ const Tasks = () => {
 
     return today > sel;
   };
-  const [updateTask] = useUpdateTaskMutation()
+  const [updateTask,{isLoading:updateLoading}] = useUpdateTaskMutation()
   const handleTaskComplete = async (id, currentStatus) => {
     const newStatus = currentStatus === "completed" ? "pending" : "completed";
     try {
@@ -107,7 +114,24 @@ const Tasks = () => {
     }
   };
 
-
+  const handleUpdate = async (e, id,close) => {
+    e.preventDefault()
+    try {
+      await updateTask({
+        id, update: {
+          todo: edit.todo,
+          tag: edit.tag,
+          startTime: edit.startTime,
+          endTime: edit.endTime
+        }
+      }).unwrap()
+      close()
+      toast.success("Task Updated Successfully!")
+    }
+    catch (error) {
+      toast.error(error?.data?.message)
+    }
+  }
 
   return (
     <div>
@@ -220,17 +244,94 @@ const Tasks = () => {
                       </div>
                     )}
                   </Popup>
+                  <Popup onOpen={() => setEdit({
+                    todo: each.todo,
+                    tag: each.tag,
+                    startTime: each.startTime,
+                    endTime: each.endTime
+
+                  })} contentStyle={{ border: "none", borderRadius: "12px", width: "90%", maxWidth: "400px" }} modal trigger={<button className='button bg-purple'>Update</button>}>
+                    {(close) => (
+                      <div>
+                        <h1 className='center'>Update Task</h1>
+                        <form onSubmit={(e) => handleUpdate(e, each._id,close)}>
+                          <div className='input-wrapper'>
+                            <input name="todo" required value={edit.todo} onChange={handleEditChange} id="task" className="input-element" type="text" />
+                            <label htmlFor="task" className="label">
+                              TASK
+                            </label>
+                          </div>
+                          <input
+                            list="tag-list"
+                            name="tag"
+                            value={edit.tag}
+                            onChange={handleEditChange}
+                            className="input-element"
+                            style={{ color: "magenta" }}
+                            placeholder="Select One Tag"
+                          />
+
+                          <datalist id="tag-list">
+                            {tagOptions.map((tag) => (
+                              <option key={tag} value={tag} />
+                            ))}
+                          </datalist>
+
+
+                          <div className="input-wrapper">
+                            <input
+                              name="startTime"
+                              value={edit.startTime}
+                              onChange={handleEditChange}
+                              id="startTime"
+                              className="input-element time"
+                              type="time"
+                            />
+                            <label htmlFor="startTime" className="label">
+                              START TIME
+                            </label>
+                          </div>
+
+                          <div className="input-wrapper">
+                            <input
+                              name="endTime"
+                              value={edit.endTime}
+                              onChange={handleEditChange}
+                              id="endTime"
+                              className="input-element time"
+                              type="time"
+                            />
+                            <label htmlFor="endTime" className="label">
+                              END TIME
+                            </label>
+                          </div>
+
+                          <button style={{ width: "100%" }} disabled={updateLoading} type="submit" className="button bg-orange">
+                            {isLoading ? (<span style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center" }}>
+                              Processing...
+                              <ClipLoader color="#007bff" size={20} />
+                            </span>) : ("Update Task")}
+                          </button>
+                          <button type="button"
+                            style={{ width: "100%" }}
+                            className='button bg-black'
+                            onClick={() => close()} >Close</button>
+
+                        </form>
+                      </div>
+                    )}
+                  </Popup>
                 </div>
 
               </div>
             ))}
           </div>
-        </ApiStateHandler>
+        </ApiStateHandler >
 
 
-      </main>
+      </main >
       <Footer />
-    </div>
+    </div >
   );
 };
 

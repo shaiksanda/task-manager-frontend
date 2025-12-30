@@ -50,6 +50,9 @@
   min-height: 80vh;
 }
 
+.time{
+  margin:4px 0px;
+}
 .form{
   background-color: black;
   border-radius: 8px;
