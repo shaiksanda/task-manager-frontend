@@ -307,7 +307,7 @@ const Tasks = () => {
                           </div>
 
                           <button style={{ width: "100%" }} disabled={updateLoading} type="submit" className="button bg-orange">
-                            {isLoading ? (<span style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center" }}>
+                            {updateLoading ? (<span style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center" }}>
                               Processing...
                               <ClipLoader color="#007bff" size={20} />
                             </span>) : ("Update Task")}
