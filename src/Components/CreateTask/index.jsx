@@ -1,17 +1,19 @@
 import { stagedTimers } from '../../fetchData';
 import { useCreateTaskMutation } from '../../services/tasks';
 import { toast } from 'react-toastify';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import { tagOptions } from '../../utils/tagOptions';
-import TodosHeader from '../TodosHeader';
+
 import { useNavigate } from 'react-router-dom';
-
+import Popup from 'reactjs-popup';
+import "reactjs-popup/dist/index.css";
 import "./index.css"
-import Sidebar from '../Sidebar';
-import Footer from "../Footer"
+// import TodosHeader from '../TodosHeader';
+// import Sidebar from '../Sidebar';
+// import Footer from "../Footer"
 
-const CreateTask = () => {
+const CreateTask = ({onClose}) => {
 
     const [data, setData] = useState({ todo: "", selectedDate: new Date(), tag: "", priority: '', startTime: "", endTime: "" })
 
@@ -23,19 +25,19 @@ const CreateTask = () => {
         }))
     }
 
-    const [createTask, { isLoading,isFetching }] = useCreateTaskMutation()
+    const [createTask, { isLoading, isFetching }] = useCreateTaskMutation()
 
-    useEffect(()=>{
-        if (isLoading || isFetching){
+    useEffect(() => {
+        if (isLoading || isFetching) {
             stagedTimers.start()
         }
-        else{
+        else {
             stagedTimers.stop()
         }
 
-        return ()=>stagedTimers.stop()
-    },[isLoading,isFetching])
-    const navigate=useNavigate()
+        return () => stagedTimers.stop()
+    }, [isLoading, isFetching])
+    const navigate = useNavigate()
 
 
     const handleAddTask = async (event) => {
@@ -59,7 +61,7 @@ const CreateTask = () => {
             toast.success("Task added successfully!");
             setData({ todo: "", tag: "", priority: "", selectedDate: new Date(), startTime: "", endTime: "" });
             navigate(-1)
-            
+
         } catch (error) {
             toast.error(error?.data?.message || "Failed to Add Task");
         }
@@ -70,10 +72,10 @@ const CreateTask = () => {
 
     return (
 
-        <div>
-            <TodosHeader />
-            <Sidebar />
-            <main className='main'>
+        <Popup lockScroll={true} closeOnDocumentClick={false} onClose={onClose} open={true} position="center center" modal trigger={<button className='button'>Create Task</button>}>
+
+            {(close) => (
+
                 <form className='form' onSubmit={handleAddTask}  >
                     <h1 style={{ margin: "0px", color: "white", textAlign: "center" }} className='create-task-heading'>Create Task</h1>
 
@@ -118,7 +120,7 @@ const CreateTask = () => {
 
                     <div style={{ backgroundColor: "white" }} className='add-date-wrapper edit-mode'>
                         <label className="date-label" htmlFor="date">Pick Date</label>
-                        <input onChange={handleChange} value={data.selectedDate.toISOString().split("T")[0]} required className='add-date-element' id="date" type="date" />
+                        <input name="selectedDate" onChange={handleChange} value={new Date(data.selectedDate).toISOString().split("T")[0]} required className='add-date-element' id="date" type="date" />
                     </div>
                     <div className="input-wrapper">
                         <input
@@ -154,10 +156,11 @@ const CreateTask = () => {
                             <ClipLoader color="#007bff" size={20} />
                         </span>) : ("Add Task")}
                     </button>
+                     <button className='close-popup-icon' type="button" onClick={onClose}>❌</button>
                 </form>
-            </main>
-            <Footer />
-        </div>
+
+            )}
+        </Popup>
 
     )
 }

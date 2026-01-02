@@ -56,6 +56,21 @@
 .form{
   background-color: black;
   border-radius: 8px;
+  position: relative
+}
+
+.close-popup-icon{
+  position: absolute;
+  right:-10px;
+  top:-10px;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border-width: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width:768px){

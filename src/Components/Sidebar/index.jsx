@@ -1,13 +1,13 @@
 import { setSelectedIndex } from "../../features/selectedSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import CreateTask from "../CreateTask";
 import { useState } from "react";
 
 import {
-  Home,     
+  Home,
   Clock,
   PlusSquare,
-  LayoutDashboard,       
+  LayoutDashboard,
   Info,             // FaInfoCircle
   Clipboard,        // FaTasks
   Zap,              // FaFire
@@ -23,7 +23,7 @@ import "./index.css"
 const sidebarItems = [
   { label: "Home", icon: <Home size={30} />, path: "/tasks" },
 
-  { label: "Create Task", icon: <PlusSquare size={28} />, path: "/create-task" },
+  { label: "Create Task", icon: <PlusSquare size={28} />, action: "createTask" },
   { label: "Dashboard", icon: <LayoutDashboard size={30} />, path: "/dashboard" },
   { label: "History", icon: <Clock size={26} />, path: "/history" },
 
@@ -38,13 +38,21 @@ const sidebarItems = [
 ];
 
 const Sidebar = () => {
+  const [openCreateTask, setOpenCreateTask] = useState(false);
+
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const selected = useSelector((state) => state.selected.selectedIdx);
 
   const handleClick = (item, idx) => {
     dispatch(setSelectedIndex(idx));
-    navigate(item.path);
+    if (item.action !== undefined) {
+      setOpenCreateTask(true);
+      return;
+    } else {
+      navigate(item.path);
+    }
+
   };
 
   const getItemStyle = (idx) => ({
@@ -54,25 +62,31 @@ const Sidebar = () => {
 
 
   return (
-    <aside>
-      {sidebarItems.map((item, idx) => {
-        if (item.type === "divider") {
-          return <hr key={idx} />;
-        }
+    <>
+      <aside>
+        {sidebarItems.map((item, idx) => {
+          if (item.type === "divider") {
+            return <hr key={idx} />;
+          }
 
-        return (
-          <div
-            key={idx}
-            onClick={() => handleClick(item, idx)}
-            className="flex-wrapper"
-            style={getItemStyle(idx)}
-          >
-            {item.icon}
-            <h1 className="item-label">{item.label}</h1>
-          </div>
-        );
-      })}
-    </aside>
+          return (
+            <div
+              key={idx}
+              onClick={() => handleClick(item, idx)}
+              className="flex-wrapper"
+              style={getItemStyle(idx)}
+            >
+              {item.icon}
+              <h1 className="item-label">{item.label}</h1>
+            </div>
+          );
+        })}
+      </aside>
+
+      {openCreateTask && (
+        <CreateTask onClose={() => setOpenCreateTask(false)} />
+      )}
+    </>
   )
 }
 

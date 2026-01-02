@@ -1,59 +1,5 @@
-
-
-.logout-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 10px 0px;
-    border-radius: 8px;
-    height: 200px;
-}
-
 .small-device-icon {
     display: block;
-}
-
-.popup-heading {
-    color: orangered;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.popup-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    justify-content: center;
-}
-
-.confirm-button {
-    width: 90px;
-    height: 40px;
-    border: none;
-    background-color: orangered;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-}
-
-.close-button {
-    width: 90px;
-    height: 40px;
-    border: none;
-    background-color: darkmagenta;
-    cursor: pointer;
-    outline: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
-    font-size: 16px;
 }
 
 
@@ -78,7 +24,7 @@
     transform: scale(1.1);
 }
 
-.username-heading{
+.username-heading {
     font-size: 20px;
     font-weight: bold;
 }
@@ -114,9 +60,23 @@
     color: magenta;
 }
 
+
+.menu-item {
+    display: block;
+}
+
+.desktop-only {
+    display: none;
+}
+
 @media screen and (min-width:768px) {
-    .confirm-button {
-        width: 120px
+
+    .desktop-only {
+        display: block;
+    }
+
+    .menu-item {
+        display: none;
     }
 
     .todo-logo-1 {
