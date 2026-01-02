@@ -29,7 +29,7 @@ const TodosHeader = () => {
   return (
     <header>
       <div>
-        <img onClick={() => handleClick("/history", 1)} className="todo-logo-1" alt="logo" src="https://res.cloudinary.com/dq4yjeejc/image/upload/v1753526930/Screenshot_2025-07-26_161649_cq1yfv.webp" />
+        <img onClick={() => handleClick("/tasks", 0)} className="todo-logo-1" alt="logo" src="https://res.cloudinary.com/dq4yjeejc/image/upload/v1753526930/Screenshot_2025-07-26_161649_cq1yfv.webp" />
       </div>
       <div>
         <h1 className='username-heading'>Welcome User</h1>
