@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 import Tooltip from "../Tooltip";
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
-import { Filter, X } from "lucide-react";
+import { Filter, Trash2, X } from "lucide-react";
 import { tagOptions } from "../../utils/tagOptions";
 import { useEffect, useState } from "react";
 import Footer from "../Footer"
@@ -141,18 +141,18 @@ const History = () => {
                   navigate(`/task/${each._id}`)
                 }}
 
-                className="grid-data"
+                className="grid-data flex-data"
               >
                 <h1 style={{ color: getStatusColor(each.status) }} className='data-heading'>Task: {each.todo}</h1>
                 <button
                   disabled={deleteLoading}
-                  className="button logout-button"
+                  className="icon"
                   onClick={(e) => {
                     e.stopPropagation(); // prevent card click
                     setOpenDeletePopup(each._id); // open the popup manually
                   }}
                 >
-                  Delete
+                  <Trash2 />
                 </button>
 
                 {openDeletePopup === each._id && (

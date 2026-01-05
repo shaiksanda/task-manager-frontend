@@ -32,7 +32,7 @@ const Modal = () => {
             <h3 className='center'>Are You Sure You Want to Logout.</h3>
             <div className='btns'>
               <button style={{width:"120px"}} onClick={()=>handleLogout(close)} className='button logout-button flex-btn'> <LogOut size={24} /> Logout</button>
-              
+              <button onClick={close} className='button bg-black'>Close</button>
             </div>
             <button className='close-popup-icon bg-black' type="button" onClick={close}>❌</button>
           </div>

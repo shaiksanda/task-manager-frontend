@@ -7,7 +7,7 @@ import Confetti from 'react-confetti';
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from 'react-spinners';
 
-import { Filter, X } from "lucide-react";
+import { Filter, X,Trash2,Pencil } from "lucide-react";
 
 import { stagedTimers } from "../../fetchData";
 import { toast } from 'react-toastify';
@@ -219,7 +219,7 @@ const Tasks = () => {
                   </Tooltip>
                   <Popup
                     modal
-                    trigger={<button className="button logout-button">Delete</button>}
+                    trigger={<button   className="icon del-icon"><Trash2 size={24} color='red' /></button>}
                     contentStyle={{ border: "none", borderRadius: "12px", width: "90%", maxWidth: "400px" }}
                   >
                     {(close) => (
@@ -242,17 +242,17 @@ const Tasks = () => {
                       </div>
                     )}
                   </Popup>
-                  <Popup onOpen={() => setEdit({
+                  <Popup  onOpen={() => setEdit({
                     todo: each.todo,
                     tag: each.tag,
                     startTime: each.startTime,
                     endTime: each.endTime
 
-                  })} contentStyle={{ border: "none", borderRadius: "12px", width: "90%", maxWidth: "400px" }} modal trigger={<button className='button bg-purple'>Update</button>}>
+                  })} contentStyle={{ border: "none", borderRadius: "12px", width: "90%", maxWidth: "400px" }} modal trigger={<button className='icon'><Pencil /></button>}>
                     {(close) => (
                       <div>
                         <h1 className='center'>Update Task</h1>
-                        <form onSubmit={(e) => handleUpdate(e, each._id, close)}>
+                        <form onSubmit={(e) =>  handleUpdate(e, each._id, close)}>
                           <div className='input-wrapper'>
                             <input name="todo" required value={edit.todo} onChange={handleEditChange} id="task" className="input-element" type="text" />
                             <label htmlFor="task" className="label">
