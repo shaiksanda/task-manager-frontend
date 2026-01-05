@@ -42,7 +42,7 @@ const Signup = () => {
   const onSubmitSuccess = (data) => {
     Cookies.set('jwt_token', data.token, { expires: 7 });
     toast.success(data.message)
-    navigate("/code-vault")
+    navigate("/tasks")
   }
 
   const handleSubmit = async (e) => {
@@ -73,7 +73,7 @@ const Signup = () => {
   const jwtToken = Cookies.get('jwt_token');
 
   if (jwtToken) {
-    return <Navigate to="/code-vault" />;
+    return <Navigate to="/tasks" />;
   }
   return (
     <main className="flex-login-layout">
