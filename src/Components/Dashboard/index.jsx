@@ -23,9 +23,9 @@ import { useState } from "react"
 
 const Dashboard = () => {
   const [days, setDays] = useState("7")
-  const { data, isLoading, isError, error, isFetching } = useDashboardDataQuery({days:days})
+  const { data, isLoading, isError, error, isFetching } = useDashboardDataQuery({ days: days })
 
-  const { statusBreakdown, priorityBreakdown, completionBreakdown, missedBreakdown, tagBreakdown } = data ?? {};
+  const { statusBreakdown, priorityBreakdown, completionBreakdown, missedBreakdown, tagBreakdown, totalTasks } = data ?? {};
 
   // Safe access for statusBreakdown
   const statusData = {
@@ -106,7 +106,7 @@ const Dashboard = () => {
       },
     },
   });
-  
+
 
 
 
@@ -116,28 +116,37 @@ const Dashboard = () => {
       <Sidebar />
       <main className="code-vault-hero">
         <h1 className="center">Dashboard</h1>
+        {(totalTasks !== null || totalTasks > 5) ? (<div className="flex-layout">
+          <img
+            src="https://res.cloudinary.com/dq4yjeejc/image/upload/v1754304003/Screenshot_2025-08-04_160928_tkliwk.webp"
+            alt="no data"
+          />
+          <h1 className="error">You don’t have enough data to show the dashboard</h1>
+        </div>) :
+          (<>
+            <select className="days-filter"
+              value={days}
+              onChange={(e) => setDays(e.target.value)}>
+              <option value="">Select Days</option>
+              <option value="7">Last 7 days</option>
+              <option value="30">Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="180">Last 180 days</option>
+              <option value="365">Last 365 days</option>
+            </select>
+            <ApiStateHandler error={error} data={data} isError={isError} isFetching={isFetching} isLoading={isLoading}>
+              <div className="dashboard-grid">
+                <div className="chart-box"><Pie data={statusData} options={commonOptions("Tasks by status")} /></div>
+                <div className="chart-box"><Doughnut data={priorityData} options={commonOptions("Tasks by priority")} /></div>
+                <div className="chart-box"><Line data={completionData} options={commonOptions("Completed tasks trend")} /></div>
+                <div className="chart-box"><Line data={missedData} options={commonOptions("Missed tasks trend")} /></div>
+                <div className="chart-box"><Bar data={tagData} options={commonOptions("Tasks by Tag")} /></div>
+              </div>
 
-        <select className="days-filter"
-          value={days}
-          onChange={(e) => setDays(e.target.value)}>
-          <option value="">Select Days</option>
-          <option value="7">Last 7 days</option>
-          <option value="30">Last 30 days</option>
-          <option value="90">Last 90 days</option>
-          <option value="180">Last 180 days</option>
-          <option value="365">Last 365 days</option>
-        </select>
-        <ApiStateHandler error={error} data={data} isError={isError} isFetching={isFetching} isLoading={isLoading}>
-          <div className="dashboard-grid">
-            <div className="chart-box"><Pie data={statusData} options={commonOptions("Tasks by status")} /></div>
-            <div className="chart-box"><Doughnut data={priorityData} options={commonOptions("Tasks by priority")} /></div>
-            <div className="chart-box"><Line data={completionData} options={commonOptions("Completed tasks trend")} /></div>
-            <div className="chart-box"><Line data={missedData} options={commonOptions("Missed tasks trend")} /></div>
-            <div className="chart-box"><Bar data={tagData} options={commonOptions("Tasks by Tag")} /></div>
-          </div>
 
+            </ApiStateHandler>
+          </>)}
 
-        </ApiStateHandler>
       </main>
       <Footer />
     </div>

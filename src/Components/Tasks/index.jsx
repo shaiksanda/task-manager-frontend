@@ -7,7 +7,7 @@ import Confetti from 'react-confetti';
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from 'react-spinners';
 
-import { Filter, X,Trash2,Pencil } from "lucide-react";
+import { Filter, X, Trash2, Pencil } from "lucide-react";
 
 import { stagedTimers } from "../../fetchData";
 import { toast } from 'react-toastify';
@@ -91,14 +91,15 @@ const Tasks = () => {
 
   const isLocked = (selectedDate) => {
     const today = new Date();
-    const sel = new Date(selectedDate);
-
-    // normalize both to start of day
     today.setHours(0, 0, 0, 0);
+
+    // Convert selectedDate from UTC → IST
+    const sel = new Date(new Date(selectedDate).getTime() + 5.5 * 60 * 60 * 1000);
     sel.setHours(0, 0, 0, 0);
 
     return today > sel;
   };
+
   const [updateTask, { isLoading: updateLoading }] = useUpdateTaskMutation()
   const handleTaskComplete = async (id, currentStatus) => {
     const newStatus = currentStatus === "completed" ? "pending" : "completed";
@@ -219,7 +220,7 @@ const Tasks = () => {
                   </Tooltip>
                   <Popup
                     modal
-                    trigger={<button   className="icon del-icon"><Trash2 size={24} color='red' /></button>}
+                    trigger={<button className="icon del-icon"><Trash2 size={24} color='red' /></button>}
                     contentStyle={{ border: "none", borderRadius: "12px", width: "90%", maxWidth: "400px" }}
                   >
                     {(close) => (
@@ -242,7 +243,7 @@ const Tasks = () => {
                       </div>
                     )}
                   </Popup>
-                  <Popup  onOpen={() => setEdit({
+                  <Popup onOpen={() => setEdit({
                     todo: each.todo,
                     tag: each.tag,
                     startTime: each.startTime,
@@ -252,7 +253,7 @@ const Tasks = () => {
                     {(close) => (
                       <div>
                         <h1 className='center'>Update Task</h1>
-                        <form onSubmit={(e) =>  handleUpdate(e, each._id, close)}>
+                        <form onSubmit={(e) => handleUpdate(e, each._id, close)}>
                           <div className='input-wrapper'>
                             <input name="todo" required value={edit.todo} onChange={handleEditChange} id="task" className="input-element" type="text" />
                             <label htmlFor="task" className="label">
