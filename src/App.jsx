@@ -8,6 +8,7 @@ import TaskDetail from './Components/TaskDetail'
 import CreateTask from "./Components/CreateTask";
 import History from "./Components/History"
 import Dashboard from "./Components/Dashboard"
+import NotFound from "./Components/NotFound";
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { ToastContainer } from 'react-toastify';
@@ -29,6 +30,7 @@ function App() {
         <Route path='/dashboard' element={<ProtectedRoute element={<Dashboard />} />} />
         <Route path="/history" element={<ProtectedRoute element={<History />} />} />
         <Route path="/task/:taskId" element={<ProtectedRoute element={<TaskDetail />} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
