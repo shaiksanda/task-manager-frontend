@@ -4,7 +4,7 @@ import {toast} from "react-toastify"
 import Cookies from "js-cookie"
 import { useNavigate } from "react-router-dom"
 import { useLogoutUserMutation } from "../../services/auth"
-
+import { LogOut } from "lucide-react";
 import "./index.css"
 const Modal = () => {
 
@@ -26,14 +26,15 @@ const Modal = () => {
   }
   return (
     <div>
-      <Popup position="center center" lockScroll closeOnDocumentClick={false} modal trigger={<button className="button logout-button"> Logout </button>}>
+      <Popup position="center center" lockScroll closeOnDocumentClick={false} modal trigger={<button style={{width:"120px"}} className="button logout-button flex-btn"><LogOut size={24} /> Logout </button>}>
         {(close) => (
           <div className='popup'>
             <h3 className='center'>Are You Sure You Want to Logout.</h3>
             <div className='btns'>
-              <button onClick={()=>handleLogout(close)} className='button logout-button'>Confirm</button>
-              <button className='button bg-black' onClick={() => close()}>Close</button>
+              <button style={{width:"120px"}} onClick={()=>handleLogout(close)} className='button logout-button flex-btn'> <LogOut size={24} /> Logout</button>
+              
             </div>
+            <button className='close-popup-icon bg-black' type="button" onClick={close}>❌</button>
           </div>
         )}
       </Popup>

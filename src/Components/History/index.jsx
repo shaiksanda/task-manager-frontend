@@ -9,13 +9,15 @@ import { useNavigate } from "react-router-dom"
 import Tooltip from "../Tooltip";
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
-import { Filter,X } from "lucide-react";
+import { Filter, X } from "lucide-react";
 import { tagOptions } from "../../utils/tagOptions";
 import { useEffect, useState } from "react";
 import Footer from "../Footer"
 import "./index.css"
 
 const History = () => {
+  const [openDeletePopup, setOpenDeletePopup] = useState(null)
+
   const [filters, setFilters] = useState({ tag: "", status: "", priority: "", selectedDate: '', search: "" })
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -31,6 +33,7 @@ const History = () => {
     try {
       await deleteTask(id).unwrap()
       toast.success("Task Deleted Successfully!")
+      setOpenDeletePopup(null)
       close()
     }
     catch (error) {
@@ -48,7 +51,7 @@ const History = () => {
   }, [isLoading, isFetching]);
 
   const removeFilters = () => {
-    setFilters({ search: "", tag: "", priority: "", status: "",selectedDate:"" })
+    setFilters({ search: "", tag: "", priority: "", status: "", selectedDate: "" })
   }
   return (
     <div>
@@ -133,50 +136,71 @@ const History = () => {
             {data?.map((each) => (
               <div
                 key={each._id}
-                onClick={() => navigate(`/task/${each._id}`)}
+                onClick={() => {
+                  if (openDeletePopup) return
+                  navigate(`/task/${each._id}`)
+                }}
+
                 className="grid-data"
               >
                 <h1 style={{ color: getStatusColor(each.status) }} className='data-heading'>Task: {each.todo}</h1>
-                <Popup
-                  modal
-                  trigger={
-                    <button
-                      disabled={deleteLoading}
-                      className="button logout-button"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Delete
-                    </button>
-                  }
-                  contentStyle={{ border: "none", borderRadius: "12px", width: "90%", maxWidth: "400px" }}
+                <button
+                  disabled={deleteLoading}
+                  className="button logout-button"
+                  onClick={(e) => {
+                    e.stopPropagation(); // prevent card click
+                    setOpenDeletePopup(each._id); // open the popup manually
+                  }}
                 >
-                  {(close) => (
-                    <div className="popup-layout">
-                      <h2>Are you sure you want to delete this Task?</h2>
-                      <div className="flex-buttons">
+                  Delete
+                </button>
+
+                {openDeletePopup === each._id && (
+                  <Popup
+                    open
+                    modal
+                    closeOnDocumentClick={false}
+                    contentStyle={{ border: "none", borderRadius: "12px", width: "90%", maxWidth: "400px" }}
+                  >
+                    {(close) => (
+                      <div className="popup-layout">
+                        <h2 className="center">Are you sure you want to delete this Task?</h2>
+                        <div className="flex-buttons">
+                          <button
+                            className="button logout-button"
+                            onClick={async (e) => {
+                              e.stopPropagation();
+                              await handleDelete(each._id, close);
+                            }}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setOpenDeletePopup(null);
+                              close();
+                            }}
+                            className="button bg-black"
+                          >
+                            Cancel
+                          </button>
+                        </div>
                         <button
-                          className="button logout-button"
-                          onClick={async (e) => {
-                            e.stopPropagation();
-                            await handleDelete(e, each._id);
+                          className="close-popup-icon bg-black"
+                          type="button"
+                          onClick={() => {
+                            setOpenDeletePopup(null);
                             close();
                           }}
                         >
-                          Delete
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            close();
-                          }}
-                          className="button bg-black"
-                        >
-                          Cancel
+                          ❌
                         </button>
                       </div>
-                    </div>
-                  )}
-                </Popup>
+                    )}
+                  </Popup>
+                )}
+
               </div>
             ))}
           </div>

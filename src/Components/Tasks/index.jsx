@@ -99,7 +99,7 @@ const Tasks = () => {
 
     return today > sel;
   };
-  const [updateTask,{isLoading:updateLoading}] = useUpdateTaskMutation()
+  const [updateTask, { isLoading: updateLoading }] = useUpdateTaskMutation()
   const handleTaskComplete = async (id, currentStatus) => {
     const newStatus = currentStatus === "completed" ? "pending" : "completed";
     try {
@@ -115,7 +115,7 @@ const Tasks = () => {
     }
   };
 
-  const handleUpdate = async (e, id,close) => {
+  const handleUpdate = async (e, id, close) => {
     e.preventDefault()
     try {
       await updateTask({
@@ -202,7 +202,6 @@ const Tasks = () => {
           <Tooltip text="Reset Filters">
             <button onClick={removeFilters} className='popup-button bg-black'><X size={20} /></button>
           </Tooltip>
-
         </div>
 
         <ApiStateHandler error={error} data={data} isError={isError} isLoading={isLoading}>
@@ -225,23 +224,21 @@ const Tasks = () => {
                   >
                     {(close) => (
                       <div className="popup-layout">
-                        <h2>Are you sure you want to delete this Task?</h2>
+                        <h2 className='center'>Are you sure you want to delete this Task?</h2>
                         <div className="flex-buttons">
                           <button
+                            disabled={deleteLoading}
                             className="button logout-button"
                             onClick={async () => {
-                              await handleDelete(each._id, close); // correct order
+                              await handleDelete(each._id, close);
                             }}
                           >
                             Delete
                           </button>
-                          <button
-                            className="button bg-black"
-                            onClick={() => close()}
-                          >
-                            Cancel
-                          </button>
+                          <button onClick={close} className='button bg-black'>Close</button>
+
                         </div>
+                        <button className='close-popup-icon bg-black' type="button" onClick={close}>❌</button>
                       </div>
                     )}
                   </Popup>
@@ -255,7 +252,7 @@ const Tasks = () => {
                     {(close) => (
                       <div>
                         <h1 className='center'>Update Task</h1>
-                        <form onSubmit={(e) => handleUpdate(e, each._id,close)}>
+                        <form onSubmit={(e) => handleUpdate(e, each._id, close)}>
                           <div className='input-wrapper'>
                             <input name="todo" required value={edit.todo} onChange={handleEditChange} id="task" className="input-element" type="text" />
                             <label htmlFor="task" className="label">
@@ -313,12 +310,8 @@ const Tasks = () => {
                               <ClipLoader color="#007bff" size={20} />
                             </span>) : ("Update Task")}
                           </button>
-                          <button type="button"
-                            style={{ width: "100%" }}
-                            className='button bg-black'
-                            onClick={() => close()} >Close</button>
-
                         </form>
+                        <button className='close-popup-icon bg-black' type="button" onClick={close}>❌</button>
                       </div>
                     )}
                   </Popup>

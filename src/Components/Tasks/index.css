@@ -21,6 +21,8 @@ html {
   display: flex;
   gap: 10px;
   margin: 15px 5px;
+  position: relative;
+  width: inherit;
 }
 
 .flex-wrap{
