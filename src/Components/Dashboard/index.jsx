@@ -26,6 +26,7 @@ const Dashboard = () => {
   const { data, isLoading, isError, error, isFetching } = useDashboardDataQuery({ days: days })
 
   const { statusBreakdown, priorityBreakdown, completionBreakdown, missedBreakdown, tagBreakdown, totalTasks } = data ?? {};
+  
 
   // Safe access for statusBreakdown
   const statusData = {
@@ -116,7 +117,8 @@ const Dashboard = () => {
       <Sidebar />
       <main className="code-vault-hero">
         <h1 className="center">Dashboard</h1>
-        {(totalTasks !== null || totalTasks > 5) ? (<div className="flex-layout">
+        
+        {(totalTasks <= 5) ? (<div className="flex-layout">
           <img
             src="https://res.cloudinary.com/dq4yjeejc/image/upload/v1754304003/Screenshot_2025-08-04_160928_tkliwk.webp"
             alt="no data"
