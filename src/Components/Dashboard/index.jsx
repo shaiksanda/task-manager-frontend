@@ -24,15 +24,16 @@ import { useState } from "react"
 const Dashboard = () => {
   const [days, setDays] = useState("7")
   const { data, isLoading, isError, error, isFetching } = useDashboardDataQuery({ days: days })
+  console.log(data)
 
-  const { statusBreakdown, priorityBreakdown, completionBreakdown, missedBreakdown, tagBreakdown, totalTasks } = data ?? {};
+  const { statusBreakdown, priorityBreakdown, completionBreakdown, pendingBreakdown, tagBreakdown, totalTasks } = data ?? {};
   
 
   // Safe access for statusBreakdown
   const statusData = {
-    labels: ['Total Tasks', 'Missed Tasks', "Completed Tasks"],
+    labels: ['Total Tasks', 'Pending Tasks', "Completed Tasks"],
     datasets: [{
-      data: [statusBreakdown?.totalTasks ?? 0, statusBreakdown?.missed ?? 0, statusBreakdown?.completed ?? 0],
+      data: [statusBreakdown?.totalTasks ?? 0, statusBreakdown?.pending ?? 0, statusBreakdown?.completed ?? 0],
       backgroundColor: ['#60a5fa', '#f87171', "#34d399"]
     }],
   };
@@ -66,10 +67,10 @@ const Dashboard = () => {
 
   // Safe access for missedBreakdown
   const missedData = {
-    labels: missedBreakdown?.map(d => d.date) ?? [],
+    labels: pendingBreakdown?.map(d => d.date) ?? [],
     datasets: [{
-      label: 'Missed Tasks',
-      data: missedBreakdown?.map(d => d.count) ?? [],
+      label: 'Pending Tasks',
+      data: pendingBreakdown?.map(d => d.count) ?? [],
       borderColor: '#f87171',
       backgroundColor: 'rgba(248,113,113,0.2)',
       tension: 0.4,
@@ -81,6 +82,7 @@ const Dashboard = () => {
   const tagData = {
     labels: tagBreakdown?.map(d => d.tag) ?? [],
     datasets: [{
+      label:"Tag",
       data: tagBreakdown?.map(d => d.count) ?? [],
       backgroundColor: ['#60a5fa', '#fbbf24', '#34d399', '#f472b6', '#f87171', '#a78bfa', '#fcd34d']
     }],
@@ -91,7 +93,7 @@ const Dashboard = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
       title: {
         display: true,
@@ -108,17 +110,15 @@ const Dashboard = () => {
     },
   });
 
-
-
-
   return (
     <div>
       <TodosHeader />
       <Sidebar />
       <main className="code-vault-hero">
         <h1 className="center">Dashboard</h1>
+        <h1>{totalTasks}</h1>
         
-        {(totalTasks <= 5) ? (<div className="flex-layout">
+        {(totalTasks <= 4) ? (<div className="flex-layout">
           <img
             src="https://res.cloudinary.com/dq4yjeejc/image/upload/v1754304003/Screenshot_2025-08-04_160928_tkliwk.webp"
             alt="no data"
