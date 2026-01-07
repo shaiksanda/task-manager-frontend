@@ -116,7 +116,7 @@ const Dashboard = () => {
       <Sidebar />
       <main className="code-vault-hero">
         <h1 className="center">Dashboard</h1>
-        <h1>{totalTasks}</h1>
+       
         
         {(totalTasks <= 4) ? (<div className="flex-layout">
           <img
