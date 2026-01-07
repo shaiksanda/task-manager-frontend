@@ -8,12 +8,8 @@ import {
   Clock,
   PlusSquare,
   LayoutDashboard,
-  Info,             // FaInfoCircle
-  Clipboard,        // FaTasks
-  Zap,              // FaFire
-  Users,            // FaAffiliatetheme (closest for "affiliate/team")
-  MessageCircle,    // MdFeedback
-  Target            // GoGoal
+  Shield,
+  
 } from "lucide-react";
 
 
@@ -26,6 +22,7 @@ const sidebarItems = [
   { label: "Create Task", icon: <PlusSquare size={28} />, action: "createTask" },
   { label: "Dashboard", icon: <LayoutDashboard size={30} />, path: "/dashboard" },
   { label: "History", icon: <Clock size={26} />, path: "/history" },
+  {label:"Admin Panel",icon:<Shield size={26} />, path:"/admin-dashboard", role:true},
 
 
   { type: "divider" },
@@ -44,12 +41,16 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const selected = useSelector((state) => state.selected.selectedIdx);
 
+  const user=useSelector(state=>state.auth.user)
+  const userRole=user.role
   const handleClick = (item, idx) => {
     dispatch(setSelectedIndex(idx));
     if (item.action !== undefined) {
       setOpenCreateTask(true);
       return;
-    } else {
+    }
+    
+     else {
       navigate(item.path);
     }
 
@@ -68,6 +69,9 @@ const Sidebar = () => {
           if (item.type === "divider") {
             return <hr key={idx} />;
           }
+
+
+          if (item.role && userRole !== "admin") return null;
 
           return (
             <div

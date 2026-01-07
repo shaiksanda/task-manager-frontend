@@ -206,7 +206,7 @@ const Tasks = () => {
           </Tooltip>
         </div>
 
-        <ApiStateHandler error={error} data={data} isError={isError} isLoading={isLoading}>
+        <ApiStateHandler error={error} data={data} isError={isError} isLoading={isLoading} isFetching={isFetching}>
           <div className="grid-data-wrapper">
             {data?.map((each) => (
               <div

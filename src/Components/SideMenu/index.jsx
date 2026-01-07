@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-import { House, X } from "lucide-react";
+import { House, X,Shield } from "lucide-react";
 import "./index.css"
 import Modal from "../Modal";
 
@@ -15,6 +15,12 @@ const SideMenu = ({ openMenu, setOpenMenu }) => {
           <div className="nav-item">
             <House size={24} />
             <h2 className="footer-text">Home</h2>
+          </div>
+        </Link>
+        <Link className="link-item" to="/admin-dashboard">
+          <div className="nav-item">
+            <Shield size={24} />
+            <h2 className="footer-text">Admin Panel</h2>
           </div>
         </Link>
         <Modal  />

@@ -9,12 +9,13 @@ import CreateTask from "./Components/CreateTask";
 import History from "./Components/History"
 import Dashboard from "./Components/Dashboard"
 import NotFound from "./Components/NotFound";
-
+import AdminDashboard from "./Components/AdminDashboard"
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './App.css';
+import UserDetails from "./Components/UserDetails";
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
         <Route path='/dashboard' element={<ProtectedRoute element={<Dashboard />} />} />
         <Route path="/history" element={<ProtectedRoute element={<History />} />} />
         <Route path="/task/:taskId" element={<ProtectedRoute element={<TaskDetail />} />} />
+        <Route path="/admin-dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />
+        <Route path="/user-detail/:userId" element={<ProtectedRoute element={<UserDetails />} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
