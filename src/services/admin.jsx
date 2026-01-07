@@ -15,8 +15,15 @@ export const admin=taskService.injectEndpoints({
                 method:"GET"
             }),
             providesTags:["Tasks"]
+        }),
+        deleteUserProfile:builder.mutation({
+            query:(id)=>({
+                url:`/users/delete-user-profile/${id}`,
+                method:"DELETE"
+            }),
+            invalidatesTags:['Tasks']
         })
     })
 })
 
-export const {useGetUsersQuery,useGetUserDetailsQuery}=admin
+export const {useGetUsersQuery,useGetUserDetailsQuery,useDeleteUserProfileMutation}=admin

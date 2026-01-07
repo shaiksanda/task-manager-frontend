@@ -1,0 +1,36 @@
+
+.user-details-container{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-details-container h3{
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.user-details-container h3:hover{
+    color: orange;
+}
+
+.popup-container{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding: 10px;
+}
+
+.purple{
+    color: purple;
+    font-weight: bold;
+}
+
+@media screen and (min-width:768px){
+    .user-details-container h3{
+        font-size: 24px;
+        
+    }
+}

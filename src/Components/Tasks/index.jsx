@@ -67,7 +67,7 @@ const Tasks = () => {
   }, [isLoading, isFetching]);
 
   const [showConfetti, setShowConfetti] = useState(false);
-  //const theme = useSelector(state => state.theme.theme)
+  
 
   useEffect(() => {
     if (data && data.length > 0) {
