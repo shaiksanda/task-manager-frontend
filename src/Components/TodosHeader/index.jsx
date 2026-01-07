@@ -1,6 +1,6 @@
 
 import { setSelectedIndex } from "../../features/selectedSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { Menu } from "lucide-react"
 import SideMenu from "../SideMenu"
 
@@ -15,6 +15,10 @@ const TodosHeader = () => {
   const isDesktop = useMediaQuery({ minWidth: 768 });
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
+
+  const user=useSelector(state=>state.auth.user)
+  
+  const {username}=user
 
 
 
@@ -32,7 +36,7 @@ const TodosHeader = () => {
         <img onClick={() => handleClick("/tasks", 0)} className="todo-logo-1" alt="logo" src="https://res.cloudinary.com/dq4yjeejc/image/upload/v1753526930/Screenshot_2025-07-26_161649_cq1yfv.webp" />
       </div>
       <div>
-        <h1 className='username-heading'>Welcome User</h1>
+        <h1 className='username-heading'>Welcome {(username ?? "User").toUpperCase()}</h1>
       </div>
       {isDesktop && <Modal />}
       <Menu onClick={() => setOpenMenu(true)} className="menu-item" />

@@ -40,7 +40,7 @@ const Tasks = () => {
     setFilters({ search: "", tag: "", priority: "", status: "" })
   }
   const { data, isLoading, isFetching, isError, error } = useGetTodayTasksQuery(filters)
-  console.log(data)
+  
   const [deleteTask, { isLoading: deleteLoading }] = useDeleteTaskMutation()
 
   const navigate = useNavigate();

@@ -5,14 +5,18 @@ import Cookies from "js-cookie"
 import { useNavigate } from "react-router-dom"
 import { useLogoutUserMutation } from "../../services/auth"
 import { LogOut } from "lucide-react";
+import { useDispatch } from 'react-redux';
+import {removeUser} from "../../features/authSlice"
 import "./index.css"
 const Modal = () => {
 
   const [logoutUser] = useLogoutUserMutation()
   const navigate = useNavigate()
+  const dispatch=useDispatch()
   const handleLogout = async (close) => {
     try {
       await logoutUser()
+      dispatch(removeUser())
       toast.success("Logged Out Successfully!")
       Cookies.remove("jwt_token")
       navigate("/");

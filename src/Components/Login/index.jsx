@@ -6,13 +6,16 @@ import { useNavigate, Navigate, Link } from 'react-router-dom';
 import PacmanLoader from "react-spinners/PacmanLoader";
 import Cookies from 'js-cookie';
 import { Eye, EyeOff } from 'lucide-react'
-
+import {useDispatch } from 'react-redux';
+import {setUser} from "../../features/authSlice"
 import { useLoginUserMutation } from "../../services/auth"
 import "./index.css"
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({ username: "", password: "" })
+    const dispatch=useDispatch()
+   
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,6 +41,9 @@ const Login = () => {
     const navigate = useNavigate();
 
     const onSubmitSuccess = (data) => {
+        const {userData}=data
+        
+        dispatch(setUser(userData))
         Cookies.set('jwt_token', data.token, { expires: 7 });
         navigate("/tasks")
         toast.success(data.message)
