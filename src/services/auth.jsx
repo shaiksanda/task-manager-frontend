@@ -25,6 +25,13 @@ export const auth = taskService.injectEndpoints({
             }),
             invalidatesTags: ["Tasks"],
         }),
+        getProfile:builder.query({
+            query:()=>({
+                url:"/users/profile",
+                method:"GET"
+            }),
+            providesTags:["Tasks"]
+        })
     })
 })
 
@@ -32,4 +39,5 @@ export const {
     useSignupUserMutation,
     useLoginUserMutation,
     useLogoutUserMutation,
+    useGetProfileQuery
 } = auth;

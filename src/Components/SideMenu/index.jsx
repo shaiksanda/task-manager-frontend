@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 
-import { House, X, Shield } from "lucide-react";
+import { House, X, Shield, User } from "lucide-react";
 import "./index.css"
-import Modal from "../Modal";
+
 
 const SideMenu = ({ openMenu, setOpenMenu }) => {
   return (
@@ -24,7 +24,13 @@ const SideMenu = ({ openMenu, setOpenMenu }) => {
             <h2 className="menu-text">Admin Panel</h2>
           </div>
         </Link>
-        <Modal />
+        <Link to="/profile" className="link-item">
+          <div className="nav-item">
+            <User size={24} />
+            <h2 className="menu-text">Profile</h2>
+          </div>
+        </Link>
+
         <div className="cross-icon">
           <X color="red" size={40} onClick={() => setOpenMenu(false)} />
         </div>
