@@ -30,6 +30,16 @@ const Profile = () => {
 
     const selectedFile = e.target.files[0]
     if (!selectedFile) return
+    if (!selectedFile.type.startsWith("image/")) {
+      toast.error("Only image files are allowed");
+      e.target.value = "";
+      return;
+    }
+    if (selectedFile.size > 3 * 1024 * 1024) {
+      toast.error("File size must be less than 3MB");
+      e.target.value = "";
+      return;
+    }
     setFile(selectedFile)
     handleUpload(selectedFile)
   }
@@ -107,12 +117,9 @@ const Profile = () => {
                   style={{ display: "none" }}
                   onChange={handleFileChange}
                 />
-
                 <h3>Username: {username}</h3>
                 {bio && <h2>Bio: {bio}</h2>}
               </div>
-
-              
               <h3>Email: {email}</h3>
               <h3>Role: {role}</h3>
               <h3>Debut At: {new Date(createdAt).toLocaleString()}</h3>
