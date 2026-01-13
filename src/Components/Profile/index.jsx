@@ -55,7 +55,7 @@ const Profile = () => {
       const res = await fetch(
         `${import.meta.env.VITE_API_URL}/users/upload-profile`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             Authorization: `Bearer ${token}`,
           },
