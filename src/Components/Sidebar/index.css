@@ -24,6 +24,15 @@ p {
     font-size: 16px;
 }
 
+.modal-outline{
+    background-color: red;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (min-width:768px){
     .item-label{
         font-size: 20px;

@@ -9,11 +9,12 @@ import {
   PlusSquare,
   LayoutDashboard,
   Shield,
-  
+
 } from "lucide-react";
 
 
 import { useNavigate } from "react-router-dom";
+import Modal from "../Modal"
 import "./index.css"
 
 const sidebarItems = [
@@ -22,7 +23,7 @@ const sidebarItems = [
   { label: "Create Task", icon: <PlusSquare size={28} />, action: "createTask" },
   { label: "Dashboard", icon: <LayoutDashboard size={30} />, path: "/dashboard" },
   { label: "History", icon: <Clock size={26} />, path: "/history" },
-  {label:"Admin Panel",icon:<Shield size={26} />, path:"/admin-dashboard", role:true},
+  { label: "Admin Panel", icon: <Shield size={26} />, path: "/admin-dashboard", role: true },
 
 
   { type: "divider" },
@@ -41,16 +42,16 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const selected = useSelector((state) => state.selected.selectedIdx);
 
-  const user=useSelector(state=>state.auth.user)
-  const userRole=user.role
+  const user = useSelector(state => state.auth.user)
+  const userRole = user.role
   const handleClick = (item, idx) => {
     dispatch(setSelectedIndex(idx));
     if (item.action !== undefined) {
       setOpenCreateTask(true);
       return;
     }
-    
-     else {
+
+    else {
       navigate(item.path);
     }
 
@@ -85,6 +86,9 @@ const Sidebar = () => {
             </div>
           );
         })}
+        <div className="modal-outline">
+          <Modal />
+        </div>
       </aside>
 
       {openCreateTask && (

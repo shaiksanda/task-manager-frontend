@@ -42,7 +42,6 @@ const Login = () => {
 
     const onSubmitSuccess = (data) => {
         const {userData}=data
-        
         dispatch(setUser(userData))
         Cookies.set('jwt_token', data.token, { expires: 7 });
         navigate("/tasks")
