@@ -144,7 +144,7 @@ const Tasks = () => {
       </div>
       <Sidebar />
       <main className='code-vault-hero'>
-        <h1 className='heading center'>Your Focus for Today</h1>
+        <h2 className='main-heading center'>Your Focus for Today</h2>
 
         <div className='filters-container'>
           <div className='input-wrapper'>

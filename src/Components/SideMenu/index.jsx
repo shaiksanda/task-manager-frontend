@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-import { House, X, Shield, User } from "lucide-react";
+import { House, X, Shield, User,Zap } from "lucide-react";
 import "./index.css"
 import Modal from "../Modal";
 
@@ -19,6 +19,13 @@ const SideMenu = ({ openMenu, setOpenMenu }) => {
             <h2 className="menu-text">Home</h2>
           </div>
         </Link>
+        <Link to="/streak" className="link-item">
+          <div className="nav-item">
+            <Zap size={24} />
+            <h2 className="menu-text">Streak</h2>
+          </div>
+        </Link>
+        
         <Link className="link-item" to="/admin-dashboard">
           <div className="nav-item">
             <Shield size={24} />

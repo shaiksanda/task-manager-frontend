@@ -17,6 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './App.css';
 import UserDetails from "./Components/UserDetails";
+import StreakPage from "./Components/StreakPage";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/tasks" element={<ProtectedRoute element={<Tasks />} />} />
         <Route path="/create-task" element={<ProtectedRoute element={<CreateTask />} />} />
         <Route path='/dashboard' element={<ProtectedRoute element={<Dashboard />} />} />
+        <Route path="/streak" element={<ProtectedRoute element={<StreakPage />} />} />
         <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
         <Route path="/history" element={<ProtectedRoute element={<History />} />} />
         <Route path="/task/:taskId" element={<ProtectedRoute element={<TaskDetail />} />} />

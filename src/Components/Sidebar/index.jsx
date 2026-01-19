@@ -9,6 +9,7 @@ import {
   PlusSquare,
   LayoutDashboard,
   Shield,
+  Zap
 
 } from "lucide-react";
 
@@ -19,16 +20,14 @@ import "./index.css"
 
 const sidebarItems = [
   { label: "Home", icon: <Home size={30} />, path: "/tasks" },
-
   { label: "Create Task", icon: <PlusSquare size={28} />, action: "createTask" },
   { label: "Dashboard", icon: <LayoutDashboard size={30} />, path: "/dashboard" },
   { label: "History", icon: <Clock size={26} />, path: "/history" },
   { label: "Admin Panel", icon: <Shield size={26} />, path: "/admin-dashboard", role: true },
-
-
+  { label: "Streak", icon: <Zap size={26} color="orangered" />, path: "/streak" },
   { type: "divider" },
   // { label: "Goals", icon: <Target size={26}/>, path: "/goals" },
-  // { label: "Streak", icon: <Zap size={26} color="orangered" />, path: "/streak" },
+
   // { label: "Theme", icon: <Users size={26} />, path: "/theme" },
   // { label: "About", icon: <Info size={28} />, path: "/about" },
   // { label: "Feedback", icon: <MessageCircle size={28} />, path: "/feedback" },

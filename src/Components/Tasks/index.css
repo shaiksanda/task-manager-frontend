@@ -121,6 +121,12 @@ html {
   height: 40px;
 }
 
+.main-heading{
+  font-size: 24px;
+  color: purple;
+  font-weight: bold;
+}
+
 @media screen and (min-width:768px) {
 
   .grid-data-wrapper {
@@ -137,6 +143,9 @@ html {
 
   .code-vault-hero {
     margin-left: 245px;
+  }
+  .main-heading{
+    font-size: 30px;
   }
 }
 
