@@ -113,7 +113,7 @@ const StreakPage = () => {
                     return (
                       <Tooltip text={tooltipText} key={day.date}>
                         <div style={{backgroundColor:getBackgroundColor(day.count)}} className="box" >
-                          {idx + 1}
+                          {day.count}
                         </div>
                       </Tooltip>
                     );
