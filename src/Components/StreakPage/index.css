@@ -1,0 +1,49 @@
+.streak-container{
+    padding: 10px;
+    outline: 1px solid red;
+    margin-left: 245px;
+    margin-top: 70px;
+    overflow: hidden;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    grid-gap: 10px; 
+    margin:10px 0px;
+}
+
+.box{
+    width: 28px;
+    height: 28px;
+    border: 1px dotted grey;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.boxes{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-gap:10px
+}
+
+@media screen and (min-width:768px){
+    .grid-container{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+.grid-item {
+    background-color: #f1f1f1; 
+    border: 1px solid #ccc; 
+    padding: 10px;
+    text-align: center; 
+    border-radius: 5px; 
+}
+
+.grid-item h2{
+    margin-bottom: 10px;
+}

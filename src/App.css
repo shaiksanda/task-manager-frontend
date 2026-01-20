@@ -99,6 +99,7 @@ footer {
     top: 75px;
     left: 0;
     width: 245px;
+    z-index: 0;
     height: calc(100vh - 56px);
 
     display: flex;
@@ -108,7 +109,7 @@ footer {
     padding: 15px 6px 25px 6px;
     background: #fff;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-    z-index: 0;
+    
 
     overflow-y: auto;
 
