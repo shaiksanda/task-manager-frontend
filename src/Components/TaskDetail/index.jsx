@@ -13,7 +13,6 @@ import "./index.css"
 const TaskDetail = () => {
   const { taskId } = useParams()
   const { data, isLoading, isFetching, isError, error } = useGetTaskQuery(taskId)
-  console.log(data)
   const { todo, selectedDate, priority, status, tag, startTime, endTime, createdAt, updatedAt } = data ?? {}
   return (
     <div>
