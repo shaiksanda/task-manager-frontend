@@ -20,7 +20,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     if (result.error && result.error.status === 401) {
         api.dispatch(removeUser());
         Cookies.remove("jwt_token");
-        navigate("/")
     }
 
     return result;
