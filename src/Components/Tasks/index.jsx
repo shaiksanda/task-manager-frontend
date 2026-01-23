@@ -1,4 +1,5 @@
 import { useState, useEffect, } from 'react';
+import formatTime from "../../utils/formatTime"
 import Tooltip from '../Tooltip';
 import Sidebar from '../Sidebar';
 import TodosHeader from '../TodosHeader';
@@ -40,7 +41,6 @@ const Tasks = () => {
     setFilters({ search: "", tag: "", priority: "", status: "" })
   }
   const { data, isLoading, isFetching, isError, error } = useGetTodayTasksQuery(filters)
-  
   const [deleteTask, { isLoading: deleteLoading }] = useDeleteTaskMutation()
 
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ const Tasks = () => {
   }, [isLoading, isFetching]);
 
   const [showConfetti, setShowConfetti] = useState(false);
-  
+
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -317,6 +317,15 @@ const Tasks = () => {
                       </div>
                     )}
                   </Popup>
+                  {each?.startTime !== undefined && (
+                    <h3 className='data-heading'>{formatTime(each.startTime)}</h3>
+                  )}
+                  <h3 className='data-heading'>To</h3>
+
+                  {each?.endTime !== undefined && (
+                    <h3 className='data-heading'>{formatTime(each.endTime)}</h3>
+                  )}
+
                 </div>
 
               </div>
