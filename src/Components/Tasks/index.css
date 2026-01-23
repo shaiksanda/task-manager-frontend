@@ -216,3 +216,13 @@ html {
   gap:10px;
   align-items: center;
 }
+
+.time-heading{
+  font-size: 14px;
+}
+
+@media screen and (min-width:768px){
+  .time-heading{
+    font-size: 18px;
+  }
+}

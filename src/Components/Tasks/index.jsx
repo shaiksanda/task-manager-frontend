@@ -318,12 +318,12 @@ const Tasks = () => {
                     )}
                   </Popup>
                   {each?.startTime !== undefined && (
-                    <h3 className='data-heading'>{formatTime(each.startTime)}</h3>
+                    <h3 className='time-heading'>{formatTime(each.startTime)}</h3>
                   )}
-                  <h3 className='data-heading'>To</h3>
+                  <h3 className='time-heading'>To</h3>
 
                   {each?.endTime !== undefined && (
-                    <h3 className='data-heading'>{formatTime(each.endTime)}</h3>
+                    <h3 className='time-heading'>{formatTime(each.endTime)}</h3>
                   )}
 
                 </div>
