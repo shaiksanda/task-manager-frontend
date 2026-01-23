@@ -43,8 +43,7 @@ const Login = () => {
     const onSubmitSuccess = (data) => {
         const {userData}=data
         dispatch(setUser(userData))
-        const expires = new Date(Date.now() + 6 * 24 * 60 * 60 * 1000)
-        Cookies.set('jwt_token', data.token, { expires});
+        Cookies.set('jwt_token', data.token, { expires:7});
         navigate("/tasks")
         toast.success(data.message)
     };
