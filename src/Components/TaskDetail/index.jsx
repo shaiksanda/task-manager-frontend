@@ -2,7 +2,7 @@ import { useGetTaskQuery } from "../../services/tasks"
 import { useParams } from "react-router-dom"
 import { getStatusColor } from "../../utils/getStatusColor"
 
-
+import formatTime from "../../utils/formatTime"
 import TodosHeader from "../TodosHeader"
 import Sidebar from "../Sidebar"
 import Footer from "../Footer"
@@ -27,14 +27,17 @@ const TaskDetail = () => {
           data={data}
         >
           <>
-            <h1 style={{color:getStatusColor(status)}} className="task-content">Task: {todo}</h1>
-            <h2>Date: {new Date(selectedDate).toDateString()}</h2>
-            <h2>Priority: {priority}</h2>
-            <h2 style={{color:getStatusColor(status)}}>Status: {status}</h2>
-            <h2>Tag: {tag}</h2>
-            {startTime && <h2>Start Time: {startTime}</h2>}
-            {endTime && <h2>End Time: {endTime}</h2>}
-            <h2>Last updated: {new Date(updatedAt).toLocaleString()}</h2>
+            <h1 className="main-heading center">Task Detail Page</h1>
+            <div className="task-detail-container">
+              <h1 style={{ color: getStatusColor(status) }} className="task-content">Task: {todo}</h1>
+              <h2>Date: {new Date(selectedDate).toDateString()}.</h2>
+              <h2>Priority: {priority}.</h2>
+              <h2>Status: {status}</h2>
+              <h2>Tag: {tag}</h2>
+              {startTime && <h2>Start Time: {formatTime(startTime)}</h2>}
+              {endTime && <h2>End Time: {formatTime(endTime)}</h2>}
+              <h2>Last updated: {new Date(updatedAt).toLocaleString()}</h2>
+            </div>
           </>
         </ApiStateHandler>
       </main>

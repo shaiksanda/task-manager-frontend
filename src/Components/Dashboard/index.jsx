@@ -115,7 +115,7 @@ const Dashboard = () => {
       <TodosHeader />
       <Sidebar />
       <main className="code-vault-hero">
-        <h1 className="center">Dashboard</h1>
+        <h1 className="main-heading center">Dashboard</h1>
        
         
         {(totalTasks <= 4) ? (<div className="flex-layout">
