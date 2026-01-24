@@ -320,7 +320,7 @@ const Tasks = () => {
                   {each?.startTime !== undefined && (
                     <h3 className='time-heading'>{formatTime(each.startTime)}</h3>
                   )}
-                  <h3 className='time-heading'>To</h3>
+                  {each?.startTime!==undefined && <h3 className='time-heading'>To</h3>}
 
                   {each?.endTime !== undefined && (
                     <h3 className='time-heading'>{formatTime(each.endTime)}</h3>
