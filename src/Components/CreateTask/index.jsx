@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import { tagOptions } from '../../utils/tagOptions';
 
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import "reactjs-popup/dist/index.css";
 import "./index.css"
@@ -37,9 +37,7 @@ const CreateTask = ({onClose}) => {
 
         return () => stagedTimers.stop()
     }, [isLoading, isFetching])
-    const navigate = useNavigate()
-
-
+   
     const handleAddTask = async (event) => {
         event.preventDefault();
 
@@ -60,8 +58,6 @@ const CreateTask = ({onClose}) => {
             await createTask(newTodo).unwrap();
             toast.success("Task added successfully!");
             setData({ todo: "", tag: "", priority: "", selectedDate: new Date(), startTime: "", endTime: "" });
-            navigate(-1)
-
         } catch (error) {
             toast.error(error?.data?.message || "Failed to Add Task");
         }
