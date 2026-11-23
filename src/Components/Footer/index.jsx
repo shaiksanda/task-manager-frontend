@@ -30,7 +30,7 @@ const Footer = () => {
                 {/* this is for fixing the clean footer, if needs streak page in footer can be removed . */}
                 <div className="navigation-container">
                     <Link className="remove-styling" to="/streak"><Zap style={{ color: "white" }} size={25} /></Link>
-                    <Link className="remove-styling" to="/streak"><p style={{ color: "white" }} className="navigation-content">Streak Page</p></Link>
+                    <Link className="remove-styling" to="/streak"><p style={{ color: "white" }} className="navigation-content">Streak</p></Link>
                 </div>
                 <div className="navigation-container">
                     <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>

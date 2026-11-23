@@ -19,12 +19,12 @@
 }
 
 .side-menu.show {
-  transform: translateX(14px);
+  transform: translateX(25px);
 }
 
 @media screen and (min-width:500px){
   .side-menu.show{
-    transform: translateX(260px);
+    transform: translateX(280px);
   }
 }
 
