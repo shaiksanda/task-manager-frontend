@@ -38,7 +38,7 @@ const CreateTask = ({onClose}) => {
         return () => stagedTimers.stop()
     }, [isLoading, isFetching])
    
-    const handleAddTask = async (event) => {
+    const handleAddTask = async (event,closePopup) => {
         event.preventDefault();
 
         const { todo, tag, priority, selectedDate, startTime, endTime } = data;
@@ -58,6 +58,7 @@ const CreateTask = ({onClose}) => {
             await createTask(newTodo).unwrap();
             toast.success("Task added successfully!");
             setData({ todo: "", tag: "", priority: "", selectedDate: new Date(), startTime: "", endTime: "" });
+            closePopup()
         } catch (error) {
             toast.error(error?.data?.message || "Failed to Add Task");
         }
@@ -72,7 +73,7 @@ const CreateTask = ({onClose}) => {
 
             {(close) => (
 
-                <form className='form' onSubmit={handleAddTask}  >
+                <form className='form' onSubmit={(e)=>handleAddTask(e,onClose)}  >
                     <h1 style={{ margin: "0px", color: "white", textAlign: "center" }} className='create-task-heading'>Create Task</h1>
 
                     <div className='input-wrapper'>

@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   const { statusBreakdown, priorityBreakdown, completionBreakdown, pendingBreakdown, tagBreakdown, totalTasks } = data ?? {};
   
-  console.log(totalTasks)
+  
   // Safe access for statusBreakdown
   const statusData = {
     labels: ['Total Tasks', 'Pending Tasks', "Completed Tasks"],
