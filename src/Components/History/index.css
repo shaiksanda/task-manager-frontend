@@ -47,4 +47,7 @@
     .filters-heading{
         font-size: 24px;
     }
+    .apply-filters-btn{
+        width: 120px;
+    }
 }
