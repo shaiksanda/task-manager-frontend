@@ -30,6 +30,14 @@ const Footer = () => {
                     <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>
                     <Link className="remove-styling" to="/history"><p style={{ color: "white" }} className="navigation-content">History</p></Link>
                 </div>
+                {/* <div className="navigation-container">
+                    <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>
+                    <Link className="remove-styling" to="/history"><p style={{ color: "white" }} className="navigation-content">History</p></Link>
+                </div> */}
+                {/* <div className="navigation-container">
+                    <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>
+                    <Link className="remove-styling" to="/history"><p style={{ color: "white" }} className="navigation-content">History</p></Link>
+                </div> */}
             </footer>
 
             {openCreateTask && (

@@ -5,3 +5,40 @@
     align-items: center;
     gap:5px
 }
+
+.filters-heading{
+    font-size: 20px;
+}
+
+.history-filters-popup{
+    gap:10px;
+    padding: 8px;
+}
+
+.remove-filters-btn{
+    background-color: black;
+    color: lavender;
+    transition:all 0.3s ease-in-out;
+}
+
+.apply-filters-btn{
+    background-color: white;
+    color: black;
+    transition:all 0.3s ease-in-out;
+}
+
+.remove-filters-btn:hover{
+    background-color: red;
+    transform: scale(1.05);
+}
+
+.apply-filters-btn:hover{
+    background-color: lavender;
+    transform: scale(1.05);
+}
+
+@media screen and (min-width:768px){
+    .filters-heading{
+        font-size: 24px;
+    }
+}

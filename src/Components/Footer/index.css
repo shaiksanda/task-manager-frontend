@@ -13,4 +13,11 @@
     font-weight: bold;
   }
 
+  /* @media screen and (min-width:568px){
+    .navigation-container{
+      flex-direction: row;
+      gap:10px;
+    }
+  } */
+
   
