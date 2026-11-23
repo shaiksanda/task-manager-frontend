@@ -22,7 +22,7 @@
 }
 
 .apply-filters-btn{
-    background-color: white;
+    background-color: grey;
     color: black;
     transition:all 0.3s ease-in-out;
 }
