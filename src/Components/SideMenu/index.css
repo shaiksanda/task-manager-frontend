@@ -2,24 +2,30 @@
 .side-menu {
   position: fixed;
   top: 0;
-  right: -300px; /* hide outside screen */
+  left: 70px;
   width: 250px;
   height: 100vh;
   background-color: lavender;
   color: orange;
-  transition: right 0.3s ease-in-out;
+  transform: translateX(-300px);
+  transition: transform 0.3s ease-in-out;
   padding: 20px;
   z-index: 999;
   box-shadow: 0px 0px 5px white;
   overflow-y: auto;
-
   display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
 }
 
 .side-menu.show {
-  left: 70px; /* slide in */
+  transform: translateX(0px);
+}
+
+@media screen and (min-width:500px){
+  .side-menu.show{
+    transform: translateX(250px);
+  }
 }
 
 /* .cross-icon{

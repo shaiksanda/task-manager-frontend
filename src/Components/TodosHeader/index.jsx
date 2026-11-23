@@ -1,4 +1,4 @@
-import Cookies from "js-cookie"
+//import Cookies from "js-cookie"
 import { setSelectedIndex } from "../../features/selectedSlice";
 import { useDispatch, useSelector } from "react-redux";
 
