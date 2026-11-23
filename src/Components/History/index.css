@@ -40,6 +40,7 @@
 
 .apply-filters-btn:hover{
     background-color: lavender;
+    color:black;
     transform: scale(1.05);
 }
 
