@@ -24,11 +24,11 @@ import { useState } from "react"
 const Dashboard = () => {
   const [days, setDays] = useState("7")
   const { data, isLoading, isError, error, isFetching } = useDashboardDataQuery({ days: days })
-  console.log(data)
+  
 
   const { statusBreakdown, priorityBreakdown, completionBreakdown, pendingBreakdown, tagBreakdown, totalTasks } = data ?? {};
   
-
+  console.log(totalTasks)
   // Safe access for statusBreakdown
   const statusData = {
     labels: ['Total Tasks', 'Pending Tasks', "Completed Tasks"],
@@ -117,7 +117,16 @@ const Dashboard = () => {
       <main className="code-vault-hero">
         <h1 className="main-heading center">Dashboard</h1>
        
-        
+        <select className="days-filter"
+              value={days}
+              onChange={(e) => setDays(e.target.value)}>
+              <option disabled value="">Select Days</option>
+              <option value="7">Last 7 days</option>
+              <option value="30">Last 30 days</option>
+              <option value="90">Last 90 days</option>
+              <option value="180">Last 180 days</option>
+              <option value="365">Last 365 days</option>
+            </select>
         {(totalTasks <= 4) ? (<div className="flex-layout">
           <img
             src="https://res.cloudinary.com/dq4yjeejc/image/upload/v1754304003/Screenshot_2025-08-04_160928_tkliwk.webp"
@@ -126,16 +135,7 @@ const Dashboard = () => {
           <h1 className="error">You don’t have enough data to show the dashboard</h1>
         </div>) :
           (<>
-            <select className="days-filter"
-              value={days}
-              onChange={(e) => setDays(e.target.value)}>
-              <option value="">Select Days</option>
-              <option value="7">Last 7 days</option>
-              <option value="30">Last 30 days</option>
-              <option value="90">Last 90 days</option>
-              <option value="180">Last 180 days</option>
-              <option value="365">Last 365 days</option>
-            </select>
+            
             <ApiStateHandler error={error} data={data} isError={isError} isFetching={isFetching} isLoading={isLoading}>
               <div className="dashboard-grid">
                 <div className="chart-box"><Pie data={statusData} options={commonOptions("Tasks by status")} /></div>
