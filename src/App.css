@@ -64,7 +64,7 @@ footer {
   display: flex;
   gap:6px;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between; 
   background: purple;
   color:black;
   padding: 6px;
