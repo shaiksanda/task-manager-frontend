@@ -1,4 +1,4 @@
-import { House, Clock, LayoutDashboard,PlusSquare } from "lucide-react";
+import { House, Clock, LayoutDashboard,PlusSquare,Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import CreateTask from "../CreateTask"
@@ -27,13 +27,14 @@ const Footer = () => {
                     <Link className="remove-styling" to="/dashboard"><p style={{ color: "white" }} className="navigation-content">Dashboard</p></Link>
                 </div>
                 <div className="navigation-container">
+                    <Link className="remove-styling" to="/streak"><Zap style={{ color: "white" }} size={25} /></Link>
+                    <Link className="remove-styling" to="/streak"><p style={{ color: "white" }} className="navigation-content">Streak</p></Link>
+                </div>
+                <div className="navigation-container">
                     <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>
                     <Link className="remove-styling" to="/history"><p style={{ color: "white" }} className="navigation-content">History</p></Link>
                 </div>
-                {/* <div className="navigation-container">
-                    <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>
-                    <Link className="remove-styling" to="/history"><p style={{ color: "white" }} className="navigation-content">History</p></Link>
-                </div> */}
+                  
                 {/* <div className="navigation-container">
                     <Link className="remove-styling" to="/history"><Clock style={{ color: "white" }} size={25} /></Link>
                     <Link className="remove-styling" to="/history"><p style={{ color: "white" }} className="navigation-content">History</p></Link>

@@ -32,6 +32,12 @@
     grid-gap:10px
 }
 
+@media screen and (min-width:568px){
+    .grid-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
 @media screen and (min-width:768px){
     .grid-container{
         grid-template-columns: repeat(4,1fr);
