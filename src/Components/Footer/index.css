@@ -9,7 +9,7 @@
 
   .navigation-content{
     margin: 4px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
   }
 
@@ -17,7 +17,7 @@
 
    @media screen and (min-width:568px){
     .navigation-content{
-      font-size: 24px;
+      font-size: 22px;
     }
   } 
 

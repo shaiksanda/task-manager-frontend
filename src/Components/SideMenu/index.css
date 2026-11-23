@@ -2,7 +2,7 @@
 .side-menu {
   position: fixed;
   top: 0;
-  left: 70px;
+  left: 50px;
   width: 250px;
   height: 100vh;
   background-color: lavender;
@@ -19,12 +19,12 @@
 }
 
 .side-menu.show {
-  transform: translateX(0px);
+  transform: translateX(14px);
 }
 
 @media screen and (min-width:500px){
   .side-menu.show{
-    transform: translateX(250px);
+    transform: translateX(260px);
   }
 }
 
